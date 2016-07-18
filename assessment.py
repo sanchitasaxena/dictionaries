@@ -28,8 +28,18 @@ def count_words(phrase):
         >>> print_dict(count_words("Porcupine see, porcupine do."))
         {'Porcupine': 1, 'do.': 1, 'porcupine': 1, 'see,': 1}
     """
-
-    return {}
+    #create empty dictionary for the count_words funciton to store data
+    print_dict = {}
+    #use for loop to iterate over phrase to split string of words into individual
+    #strings
+    for word in phrase.split():
+    # if statement to see if word already exists as a key, and if not, to create
+    # a new key.
+        if word in print_dict.keys():
+            print_dict[word] = print_dict[word] + 1
+        else:
+            print_dict[word] = 1
+    return print_dict
 
 
 def get_melon_price(melon_name):
@@ -51,8 +61,20 @@ def get_melon_price(melon_name):
         >>> get_melon_price('Tomato')
         'No price found'
     """
-
-    return 0
+    # creating the melon dictionary ( I KNOW IT'S A GENERIC NAME lol)
+    melon_dict = { 
+                    'Watermelon': 2.95,
+                    'Cantaloupe': 2.50,
+                    'Musk': 3.25,
+                    'Christmas': 14.45
+    }
+    # if statement to check whether the melon inputted by user is within the
+    # dictionary. If it is, the value / price will be returned, if not,
+    # the user will get a message saying 'no price found'
+    if melon_name in melon_dict.keys():
+        return melon_dict[melon_name]
+    else:
+        return 'No price found'
 
 
 def word_length_sorted(words):
@@ -71,6 +93,20 @@ def word_length_sorted(words):
         [(1, ['a']), (2, ['an', 'ok']), (3, ['day']), (5, ['apple'])]
     """
 
+    word_lengths = {}
+
+    for word in words:
+        if len(word) not in word_lengths.keys():
+            word_lengths[len(word)] = [word]
+        else:
+            word_lengths[len(word)].append(word)
+
+    list_of_lengths = []
+
+    for key, value in word_lengths.iteritems():
+        list_of_lengths.append((key, sorted(value)))
+
+    return list_of_lengths
     return []
 
 
@@ -112,8 +148,48 @@ def translate_to_pirate_talk(phrase):
         >>> translate_to_pirate_talk("my student is not a man!")
         'me swabbie be not a man!'
     """
+    # created a dictionary with english words as keys and pirate slang as values
+    pirate_dictionary = {
+                            'sir': 'matey',
+                            'hotel': 'fleabag inn',
+                            'student': 'swabbie',
+                            'man': 'matey',
+                            'professor': 'foul blaggart',
+                            'restaurant': 'galley',
+                            'your': 'yer',
+                            'excuse': 'arr',
+                            'students': 'swabbies',
+                            'are': 'be',
+                            'restroom': 'head',
+                            'my': 'me',
+                            'is': 'be'
+    }
 
-    return ""
+    # defining a variable to split the phrase inputted by user
+    word_list = phrase.split()
+    # created an empty list
+    pirate_translation = []
+
+
+    # using for loop to iterate over the string split into individual words
+    for word in word_list:
+    # if statement to check if word is a key in the pirate dictionary I created
+    # as to translate into pirate jargon
+        if word in pirate_dictionary.keys():
+            # if word is, add word to the pirate_transaltion list using the 
+            # value associated with the pirate dictionary -- that being the
+            # pirate term
+            pirate_translation.append(pirate_dictionary[word])
+        else:
+            # else just add the word into the list of pirate_translation as itself
+            pirate_translation.append(word)
+
+    # create string out of list with translated workd using .join() method,
+    # seperating with a space " "
+    pirate_translation = " ".join(pirate_translation)
+
+    return pirate_translation
+
 
 
 def kids_game(names):
@@ -153,6 +229,8 @@ def kids_game(names):
     a dictionary (with the super-fast lookup they provide) can help;
     good solutions here will definitely require a dictionary.
     """
+    # definitely couldn't even think of how to start, decided to focus on
+    # OO assessment - will come back to it when I've got time !!!! 
 
     return []
 
