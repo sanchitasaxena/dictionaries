@@ -31,8 +31,12 @@ def without_duplicates(words):
         >>> sorted(without_duplicates([111111, 2, 33333, 2]))
         [2, 33333, 111111]
     """
+    without_duplicates = []
+    for word in words:
+        if word not in without_duplicates:
+            without_duplicates.append(word)
+    return without_duplicates
 
-    return []
 
 
 def find_unique_common_items(items1, items2):
@@ -61,8 +65,11 @@ def find_unique_common_items(items1, items2):
         >>> sorted(find_unique_common_items(["2", "1", 2], [2, 1]))
         [2]
     """
-
-    return []
+    common_items = []
+    for element in items1:
+        if element in items2:
+            common_items.append(element)
+    return common_items
 
 def get_sum_zero_pairs(numbers):
     """Given list of numbers, return list of pair summing to 0.
@@ -90,8 +97,29 @@ def get_sum_zero_pairs(numbers):
         >>> sort_pairs( get_sum_zero_pairs([1, 3, -1, 1, 1, 0]) )
         [[-1, 1], [0, 0]]
     """
+    # set created to keep list unique as to not have duplicates
+    created_set = set(numbers)
+    # empty list created to hold pairs found
+    pairs_list = []
+    #for number in set created, add to new list
+    for number in created_set:
+        new_list = []
+        # if the number is negative and the absolute value of that number is in 
+        # the set created earlier
+        if number <= 0 and abs(num) in created_set:
+            # add the number to the to new list
+            new_list.append(num)
+            # also add the absolute value of that number to the list
+            new_list.append(abs(num))
+        #if the new list is not empty add the new list to the pairs list
+        if new_list != []:
+            pairs_list.append(new_list)
+    # define the sorted pairs list as a new variable
+    sort_pairs = sorted(pairs_list)
 
-    return []
+    return sort_pairs
+
+
 
 
 def top_chars(phrase):
