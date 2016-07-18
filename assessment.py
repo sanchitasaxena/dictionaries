@@ -92,20 +92,28 @@ def word_length_sorted(words):
         >>> word_length_sorted(["ok", "an", "apple", "a", "day"])
         [(1, ['a']), (2, ['an', 'ok']), (3, ['day']), (5, ['apple'])]
     """
-
+    # created a dictionary to hold the length of words and words
+    # with the length as a key and the words in lists as values
     word_lengths = {}
 
+    # for word in inputted list of words, if the length of the word is not set 
+    # as a key in the dictionary, then add the length with associated key
+    # else add the word to the value list associated with the key/ length of word
     for word in words:
         if len(word) not in word_lengths.keys():
             word_lengths[len(word)] = [word]
         else:
             word_lengths[len(word)].append(word)
-
+    # created an empty list to store keys and values after using method 
+    # .iteritems()
+ 
     list_of_lengths = []
-
+    # for each key, value in the dicitonary word_lengths    
+    # iteritems() to return an object (tuple in our case) and we can iterate over
+    # the tutples 
     for key, value in word_lengths.iteritems():
+        #add the keys and sorted values to this list 
         list_of_lengths.append((key, sorted(value)))
-
     return list_of_lengths
     return []
 
